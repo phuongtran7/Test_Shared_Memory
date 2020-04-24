@@ -1,0 +1,13 @@
+namespace Gintama;
+
+table Character {
+	name:string;
+	quote:string;
+}
+
+table Yorozuya {
+	index:int;
+	member:[Character];
+}
+
+root_type Yorozuya;
