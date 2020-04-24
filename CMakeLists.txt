@@ -3,5 +3,5 @@
 project ("Test_Shared_Memory")
 
 # Include sub-projects.
-add_subdirectory ("Test_Shared_Memory/Writer")
-add_subdirectory ("Test_Shared_Memory/Reader")
+add_subdirectory ("Writer")
+add_subdirectory ("Reader")
