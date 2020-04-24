@@ -14,37 +14,16 @@ void create_data(flatbuffers::FlatBufferBuilder& builder, unsigned int count) {
 
 	std::vector<flatbuffers::Offset<Gintama::Character>> member_vector;
 
-	auto gin_name = builder.CreateString("Sakata Gintoki");
-	auto gin_quote = builder.CreateString("Idiots, in their own idiotic way, have their own idiotic worries.");
-	Gintama::CharacterBuilder gintoki(builder);
-	gintoki.add_name(gin_name);
-	gintoki.add_quote(gin_quote);
-	auto gin_offset = gintoki.Finish();
-	member_vector.push_back(gin_offset);
+	auto gin = Gintama::CreateCharacterDirect(builder, "Sakata Gintoki", "Idiots, in their own idiotic way, have their own idiotic worries.");
+	member_vector.push_back(gin);
 
-	auto shinpachi_name = builder.CreateString("Shimura Shinpachi");
-	auto shinpachi_quote = builder.CreateString("This country is done for.");
-	Gintama::CharacterBuilder shinpachi(builder);
-	shinpachi.add_name(shinpachi_name);
-	shinpachi.add_quote(shinpachi_quote);
-	auto shinpachi_offset = shinpachi.Finish();
-	member_vector.push_back(shinpachi_offset);
+	auto shinpachi = Gintama::CreateCharacterDirect(builder, "Shimura Shinpachi", "This country is done for.");
+	member_vector.push_back(shinpachi);
 
-	auto kagura_name = builder.CreateString("Kagura");
-	auto kagura_quote = builder.CreateString("HAAARLEEEY DAVIDSOOOON!!!");
-	Gintama::CharacterBuilder kagura(builder);
-	kagura.add_name(kagura_name);
-	kagura.add_quote(kagura_quote);
-	auto kagura_offset = kagura.Finish();
-	member_vector.push_back(kagura_offset);
+	auto kagura = Gintama::CreateCharacterDirect(builder, "Kagura", "HAAARLEEEY DAVIDSOOOON!!!");
+	member_vector.push_back(kagura);
 
-	auto members = builder.CreateVector(member_vector);
-
-	Gintama::YorozuyaBuilder yorozuya(builder);
-	yorozuya.add_index(count);
-	yorozuya.add_member(members);
-
-	auto forever_yorozuya = yorozuya.Finish();
+	auto forever_yorozuya = Gintama::CreateYorozuyaDirect(builder, count, &member_vector);
 
 	builder.Finish(forever_yorozuya);
 
