@@ -1,6 +1,11 @@
 #include "Reader.h"
 
+#ifdef __linux__ 
+using boost::interprocess::shared_memory_object;
+#elif _WIN32
 using boost::interprocess::windows_shared_memory;
+#endif
+
 using boost::interprocess::named_sharable_mutex;
 using boost::interprocess::mapped_region;
 using boost::interprocess::sharable_lock;

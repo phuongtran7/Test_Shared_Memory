@@ -25,3 +25,6 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 endif ()
 endif (WIN32)
 
+if (UNIX)
+	target_link_libraries(Writer PRIVATE pthread rt)
+endif (UNIX)
